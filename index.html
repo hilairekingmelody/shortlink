@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shortlink — Raccourcisseur de liens</title>
+  <meta name="description" content="Raccourcissez vos liens facilement avec Shortlink, outil simple et rapide pour tous." />
+  <link rel="icon" href="https://fav.farm/🔗" />
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #1e1e1e;
+      --text-light: #333;
+      --text-dark: #eee;
+      --primary: #246FDE;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    input {
+      width: 80%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+    }
+    .toggle {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #1c03ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><img src="shortlink.png" alt="" style="width: 400px;"></h1>
+    <p>Raccourcissez vos liens en un clic</p>
+    <input type="text" id="longUrl" placeholder="Colle ton lien ici..." />
+    <br />
+    <button onclick="shorten()">Raccourcir</button>
+    <div class="result" id="result"></div>
+    <div class="toggle" onclick="toggleMode()">🌙 Mode sombre / ☀️ Mode clair</div>
+    <footer>
+      © 2025 ShortlinkDRC — Hilaire Assumani@prod.
+    </footer>
+  </div>
+
+  <script>
+    async function shorten() {
+      const input = document.getElementById("longUrl").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      if (!input.startsWith("http://") && !input.startsWith("https://")) {
+        resultDiv.textContent = "❌ Le lien doit commencer par http:// ou https://";
+        return;
+      }
+
+      resultDiv.textContent = "⏳ Raccourcissement en cours...";
+      try {
+        const res = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(input)}`);
+        const shortUrl = await res.text();
+        resultDiv.innerHTML = `✅ Lien court : <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+      } catch (err) {
+        resultDiv.textContent = "❌ Erreur réseau ou API.";
+      }
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
