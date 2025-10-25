@@ -31,9 +31,14 @@
       margin: auto;
       text-align: center;
     }
+    img.logo {
+      width: 300px;
+      margin-bottom: 1rem;
+    }
     h1 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
     }
     input {
       width: 80%;
@@ -62,24 +67,62 @@
       cursor: pointer;
       color: var(--primary);
     }
+    .faq {
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .faq h2 {
+      text-align: center;
+      color: var(--primary);
+    }
+    details {
+      margin-bottom: 1rem;
+      background: #f0f0f0;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
     footer {
       margin-top: 3rem;
       font-size: 0.8rem;
-      color: #1c03ff;
+      color: #777;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1><img src="shortlink.png" alt="" style="width: 400px;"></h1>
+    <h1><img src="shortlink.png" alt="Shortlink logo" class="logo" /></h1>
     <p>Raccourcissez vos liens en un clic</p>
     <input type="text" id="longUrl" placeholder="Colle ton lien ici..." />
     <br />
     <button onclick="shorten()">Raccourcir</button>
     <div class="result" id="result"></div>
     <div class="toggle" onclick="toggleMode()">🌙 Mode sombre / ☀️ Mode clair</div>
+
+    <section class="faq">
+      <h2>❓ FAQ</h2>
+
+      <details>
+        <summary>Comment raccourcir un lien ?</summary>
+        <p>Collez votre lien dans le champ prévu, puis cliquez sur "Raccourcir". Le lien court s'affichera juste en dessous.</p>
+      </details>
+
+      <details>
+        <summary>Est-ce que le service est gratuit ?</summary>
+        <p>Oui, Shortlink est 100% gratuit et conçu pour les créateurs africains.</p>
+      </details>
+
+      <details>
+        <summary>Pourquoi mon lien ne fonctionne pas ?</summary>
+        <p>Assurez-vous que le lien commence par http:// ou https://. Certains liens d’images ou temporaires peuvent être rejetés par l’API.</p>
+      </details>
+    </section>
+
     <footer>
-      © 2025 ShortlinkDRC — Hilaire Assumani@prod.
+      © 2025 ShortlinkDRC – Hilaire Assumani@prod
     </footer>
   </div>
 
