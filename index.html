@@ -84,6 +84,8 @@
       font-size: 0.9rem;
       cursor: pointer;
       color: var(--primary);
+      width: 40px;
+      margin-left: 500px;
     }
     .faq {
       margin-top: 3rem;
@@ -110,10 +112,10 @@
 
 
 #contact, #support {
-  background-color: #f9f9f9;
-  padding: 30px;
-  margin: 40px 0;
+  background-color: #e8f5e9;
+  padding: 25px;
   border-radius: 8px;
+  margin: 40px 0;
   text-align: center;
 }
 
@@ -121,7 +123,7 @@
   display: inline-block;
   margin-top: 15px;
   padding: 12px 24px;
-  background-color: #0077cc;
+  background-color: #28a745;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -175,13 +177,13 @@
 </head>
 <body>
   <div class="container">
+    <div class="toggle" onclick="toggleMode()">🌙☀️</div>
     <h1><img src="shortlink.png" alt="Shortlink logo" class="logo" /></h1>
     <p>Raccourcissez vos liens en un clic</p>
     <input type="text" id="longUrl" placeholder="Colle ton lien ici..." />
     <br />
     <button onclick="shorten()">Raccourcir</button>
     <div class="result" id="result"></div>
-    <div class="toggle" onclick="toggleMode()">🌙 Mode sombre / ☀️ Mode clair</div>
 
     <section class="faq">
       <h2>❓ FAQ</h2>
@@ -207,8 +209,8 @@
   <a href="mailto:hilairekingmelody@gmail.com" class="contact-btn">Envoyez-nous un email</a>
 </section>
     <section id="support">
-  <h2>💙 Soutenez Le Congolais CD</h2>
-  <p>Notre média est indépendant et communautaire. Chaque geste compte pour continuer à informer et unir.</p>
+  <h2>💙 Soutenez ShortLink</h2>
+  <p>Chaque geste compte pour continuer à informer et unir.</p>
   <a href="https://www.paypal.com/paypalme/hilairekingmelody" target="_blank" class="support-btn">Faire un don</a>
 </section>
 <section id="systeme-affiliation">
